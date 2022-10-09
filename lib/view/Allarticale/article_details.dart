@@ -1,5 +1,7 @@
 import 'package:fakeshop1/model/allproduct_model.dart';
+import 'package:fakeshop1/repository/helper/navigator_help.dart';
 import 'package:fakeshop1/repository/web_service/fetch_allcategor.dart';
+import 'package:fakeshop1/view/productdetails/product_details.dart';
 import 'package:flutter/material.dart';
 
 class Alrticle_details extends StatelessWidget {
@@ -19,7 +21,7 @@ class Alrticle_details extends StatelessWidget {
           print('sucsess $indx');
           return Scaffold(
             appBar: AppBar(
-              title: Text('$indx'),
+              title: Text(indx.toString()),
               centerTitle: true,
             ),
             body: ListView.builder(
@@ -33,7 +35,18 @@ class Alrticle_details extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          navigatoronly(
+                            context,
+                            Product_details(
+                              title: data[i].title,
+                              price: data[i].price.toString(),
+                              description: data[i].description,
+                              img: data[i].image,
+                              categor: data[i].category,
+                            ),
+                          );
+                        },
                         splashColor: Color.fromARGB(255, 216, 210, 209),
                         child: Container(
                           width: double.infinity,

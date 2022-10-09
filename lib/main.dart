@@ -12,7 +12,9 @@ class MainScreen extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Home_screen(),
       theme: ThemeData(
-        appBarTheme: AppBarTheme(backgroundColor: Colors.red.shade500),
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.red.shade500,
+        ),
       ),
     );
   }

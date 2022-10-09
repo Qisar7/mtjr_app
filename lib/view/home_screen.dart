@@ -4,6 +4,7 @@ import 'package:fakeshop1/view/All_item.dart';
 import 'package:fakeshop1/view/cart.dart';
 import 'package:fakeshop1/view/catergry.dart';
 import 'package:fakeshop1/view/setting.dart';
+import 'package:fakeshop1/view/widget/drawer_w.dart';
 import 'package:flutter/material.dart';
 
 class Home_screen extends StatefulWidget {
@@ -26,7 +27,7 @@ class _Home_screenState extends State<Home_screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(),
+      drawer: Drawer_wd(),
       body: wdget[cruntindex],
       appBar: AppBar(
         title: Text('SHOP'),

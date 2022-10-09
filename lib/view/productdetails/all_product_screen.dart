@@ -1,5 +1,7 @@
 import 'package:fakeshop1/model/allproduct_model.dart';
+import 'package:fakeshop1/repository/helper/navigator_help.dart';
 import 'package:fakeshop1/repository/web_service/fetch_allcategor.dart';
+import 'package:fakeshop1/view/productdetails/product_details.dart';
 import 'package:flutter/material.dart';
 
 class All_Product extends StatelessWidget {
@@ -19,7 +21,7 @@ class All_Product extends StatelessWidget {
 
           return GridView.builder(
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(
+            physics: const NeverScrollableScrollPhysics(
                 parent: AlwaysScrollableScrollPhysics()),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
@@ -27,36 +29,49 @@ class All_Product extends StatelessWidget {
             itemCount: data.length,
             itemBuilder: (BuildContext context, int i) {
               return Card(
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: NetworkImage(data[i].image),
-                              fit: BoxFit.contain,
+                child: InkWell(
+                  onTap: () {
+                    navigatoronly(
+                        context,
+                        Product_details(
+                          title: data[i].title,
+                          price: data[i].price.toString(),
+                          description: data[i].description,
+                          img: data[i].image,
+                          categor: data[i].category,
+                        ));
+                  },
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: NetworkImage(data[i].image),
+                                fit: BoxFit.contain,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.all(20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                              child: Text(
-                                '${data[i].title}',
-                                style: TextStyle(fontSize: 12),
-                                overflow: TextOverflow.ellipsis,
+                        Container(
+                          margin: EdgeInsets.all(20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  '${data[i].title}',
+                                  style: TextStyle(fontSize: 12),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
                               ),
-                            ),
-                            // Text('${data[i].category}'),
-                          ],
+                              // Text('${data[i].category}'),
+                            ],
+                          ),
                         ),
-                      ),
-                    ]),
+                      ]),
+                ),
               );
             },
           );
