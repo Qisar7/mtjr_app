@@ -26,10 +26,14 @@ class _Home_screenState extends State<Home_screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(),
       body: wdget[cruntindex],
       appBar: AppBar(
         title: Text('SHOP'),
         centerTitle: true,
+        actions: [
+          IconButton(onPressed: () {}, icon: Icon(Icons.shopping_basket))
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: cruntindex,

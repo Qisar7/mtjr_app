@@ -3,10 +3,9 @@ import 'package:fakeshop1/repository/web_service/fetch_allcategor.dart';
 import 'package:flutter/material.dart';
 
 class All_Product extends StatelessWidget {
-  const All_Product({
-    Key? key,
+  All_Product({
     required this.netWork,
-  }) : super(key: key);
+  });
 
   final NetWork netWork;
 
@@ -19,6 +18,9 @@ class All_Product extends StatelessWidget {
           List<AllProduct> data = snapshot.data as List<AllProduct>;
 
           return GridView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(
+                parent: AlwaysScrollableScrollPhysics()),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
             ),
